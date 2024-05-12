@@ -1,14 +1,12 @@
-@tailwind base;
 @tailwind components;
 @tailwind utilities;
+
 @layer components {
   .all-\[unset\] {
     all: unset;
   }
 }
-
 :root {
   --RS-colors-RS-offline: rgba(255, 255, 255, 1);
   --RS-colors-RS-online: rgba(255, 255, 255, 1);
 }
-

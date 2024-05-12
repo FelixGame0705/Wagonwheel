@@ -1,3 +1,9 @@
-FROM node:alpine
+FROM node:alpine AS builder
 WORKDIR /wagon-wheel
-ENTRYPOINT [ "" ]
+COPY package*.json ./
+COPY . .
+RUN yarn install -f
+RUN yarn build
+FROM nginx:alpine
+COPY --from=builder /wagon-wheel/dist /usr/share/nginx/html
+CMD ["nginx", "-g", "daemon off;"]
